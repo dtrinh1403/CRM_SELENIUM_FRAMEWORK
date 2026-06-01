@@ -93,6 +93,24 @@ public class NewCustomerPage extends BasePage {
     public boolean compareTotalCustomersAfterAdd(int totalBeforeAdd, int totalAfterAdd) {
         return totalAfterAdd == totalBeforeAdd + 1;
     }
+    public String createNewCustomer(String companyName, String vatNumber, String phone, String website, String groupName, String currency, String language, String address, String city, String state, String zipCode, String country) {
+        String uniqueCompanyName = companyName + System.currentTimeMillis();
+        enterNewCustomerCompany(uniqueCompanyName);
+        enterNewCustomerVATNumber(vatNumber);
+        enterNewCustomerPhone(phone);
+        enterNewCustomerWebsite(website);
+        selectNewCustomerGroups(groupName);
+        selectNewCustomerCurrency(currency);
+        selectNewCustomerLanguage(language);
+        enterNewCustomerAddress(address);
+        enterNewCustomerCity(city);
+        enterNewCustomerState(state);
+        enterNewCustomerZipCode(zipCode);
+        selectNewCustomerCountry(country);
+        clickButtonSaveOnly();
+        //return unique name to search,edit or delete later
+        return uniqueCompanyName;
+    }
 
 
 }

@@ -5,6 +5,7 @@
         <classes>
           <class name = "crm.com.testcases.LoginTest"/>
             <class name= "crm.com.testcases.NewCustomerTest"/>
+            <class name= "crm.com.testcases.CustomerPageTest"/>
         </classes>
     </test>
 </suite>
