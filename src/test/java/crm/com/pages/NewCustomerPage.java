@@ -1,5 +1,6 @@
 package crm.com.pages;
 
+import crm.com.helpers.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -51,44 +52,45 @@ public class NewCustomerPage extends BasePage {
         }
     }
     public void enterNewCustomerCompany(String name) {
-        enterText(inputNewCustomerCompany, name);
+        WebUI.enterText(driver,inputNewCustomerCompany, name);
     }
     public void enterNewCustomerVATNumber(String vatNumber) {
-        enterText(inputNewCustomerVATNumber, vatNumber);
+        WebUI.enterText(driver,inputNewCustomerVATNumber, vatNumber);
     }
     public void enterNewCustomerPhone(String phone) {
-        enterText(inputNewCustomerPhone, phone);
+
+        WebUI.enterText(driver, inputNewCustomerPhone, phone);
     }
     public void enterNewCustomerWebsite(String website) {
-        enterText(inoutNewCustomerWebsite, website);
+        WebUI.enterText(driver, inoutNewCustomerWebsite, website);
     }
     public void enterNewCustomerAddress(String address) {
-        enterText(inputNewCustomerAddress, address);
+        WebUI.enterText(driver, inputNewCustomerAddress, address);
     }
     public void enterNewCustomerCity(String city) {
-        enterText(inputNewCustomerCity, city);
+        WebUI.enterText(driver, inputNewCustomerCity, city);
     }
     public void enterNewCustomerState(String state) {
-        enterText(inputNewCustomerState, state);
+        WebUI.enterText(driver, inputNewCustomerState, state);
     }
     public void enterNewCustomerZipCode(String zipCode) {
-        enterText(inputNewCustomerZipCode, zipCode);
+        WebUI.enterText(driver, inputNewCustomerZipCode, zipCode);
     }
     public void selectNewCustomerGroups(String groupName) {
-        clickDropdownOptionWithInputSearch(dropdownNewCustomerGroups, inputSearchNewCustomerGroups, groupName, optionSearchNewCustomerGroups);
-        clickElement(dropdownNewCustomerGroups);
+        WebUI.clickDropdownOptionWithInputSearch(driver, dropdownNewCustomerGroups, inputSearchNewCustomerGroups, groupName, optionSearchNewCustomerGroups);
+        WebUI.clickElement(driver, dropdownNewCustomerGroups);
     }
     public void selectNewCustomerCurrency(String currency) {
-        clickDropdownOptionWithInputSearch(dropdownNewCustomerCurrency, inputSearchNewCustomerCurrency, currency, optionSearchNewCustomerCurrency);
+        WebUI.clickDropdownOptionWithInputSearch(driver, dropdownNewCustomerCurrency, inputSearchNewCustomerCurrency, currency, optionSearchNewCustomerCurrency);
     }
     public void selectNewCustomerLanguage(String language) {
-       clickDropdownOption(dropdownNewCustomerLanguage, language, optionsNewCustomerLanguage);
+       WebUI.clickDropdownOption(driver, dropdownNewCustomerLanguage, language, optionsNewCustomerLanguage);
     }
     public void selectNewCustomerCountry(String country) {
-       clickDropdownOptionWithInputSearch(dropdownNewCustomerCountry, inputSearchNewCustomerCountry, country, optionSearchNewCustomerCountry);
+      WebUI.clickDropdownOptionWithInputSearch(driver, dropdownNewCustomerCountry, inputSearchNewCustomerCountry, country, optionSearchNewCustomerCountry);
     }
     public void clickButtonSaveOnly() {
-        clickElement(buttonSaveOnly);
+        WebUI.clickElement(driver, buttonSaveOnly);
     }
     public boolean compareTotalCustomersAfterAdd(int totalBeforeAdd, int totalAfterAdd) {
         return totalAfterAdd == totalBeforeAdd + 1;

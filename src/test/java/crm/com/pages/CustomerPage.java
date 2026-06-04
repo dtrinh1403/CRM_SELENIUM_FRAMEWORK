@@ -1,5 +1,6 @@
 package crm.com.pages;
 
+import crm.com.helpers.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -29,41 +30,41 @@ public class CustomerPage  extends BasePage {
     }
 
     public void navigateToAddNewCustomerPage() {
-        clickElement(buttonAddNewCustomer);
+        WebUI.clickElement(driver, buttonAddNewCustomer);
     }
     public int getCurrentTotalCustomers() {
-        String totalCustomersText = getText(numberTotalCustomers);
+        String totalCustomersText = WebUI.getText(driver, numberTotalCustomers);
         return Integer.parseInt(totalCustomersText);
     }
     public void searchCustomerSummary(String name){
-        enterText(inputCustomerSearch, name);
+        WebUI.enterText(driver, inputCustomerSearch, name);
     }
 
     public String getCompanyCustomerSummary(String expectedName) {
         try {
 
             wait.until(ExpectedConditions.textToBePresentInElementLocated(companyCustomerSummary, expectedName));
-            return getText(companyCustomerSummary);
+            return WebUI.getText(driver, companyCustomerSummary);
         } catch (Exception e) {
             //empty string is returned if no customer found, to avoid NoSuchElementException
             return "";
         }
     }
     public void deleteCustomerByCompanyName(String uniqueCompanyName){
-        enterText(inputCustomerSearch, uniqueCompanyName);
+        WebUI.enterText(driver, inputCustomerSearch, uniqueCompanyName);
         By deleteButtonLocator = By.xpath(String.format(deleteCustomerButton, uniqueCompanyName));
 
         // Hover over the company name to make the delete button visible
         Actions actions = new Actions(driver);
-        actions.moveToElement(waitForVisibility(companyCustomerSummary )).perform();
-        clickElement(deleteButtonLocator);
+        actions.moveToElement(WebUI.waitForVisibility(driver, companyCustomerSummary)).perform();
+        WebUI.clickElement(driver, deleteButtonLocator);
         //handle alert pop up
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
     private boolean isEmptyStateMessageDisplayed() {
         try {
-            return waitForVisibility(emptyStateMessageCustomerSummary).isDisplayed();
+            return WebUI.waitForVisibility(driver, emptyStateMessageCustomerSummary).isDisplayed();
         } catch (Exception e) {
             // If element not found, return false
             return false;

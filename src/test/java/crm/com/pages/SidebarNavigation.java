@@ -1,5 +1,6 @@
 package crm.com.pages;
 
+import crm.com.helpers.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,11 +18,11 @@ public SidebarNavigation(WebDriver driver) {
 
 // Navigation actions
 public void clickCustomersMenu() {
-    clickElement(customersMenu);
+    WebUI.clickElement(driver, customersMenu);
 }
 
 public void clickProjects() {
-    clickElement(projectsMenu);
+    WebUI.clickElement(driver, projectsMenu);
 }
 
 }

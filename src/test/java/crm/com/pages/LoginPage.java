@@ -1,5 +1,6 @@
 package crm.com.pages;
 
+import crm.com.helpers.WebUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -25,20 +26,20 @@ public class LoginPage extends BasePage{
     }
 
     public void enterEmail(String email) {
-        enterText(inputEmail, email);
+        WebUI.enterText(driver, inputEmail, email);
     }
     public void enterPassword(String password) {
-        enterText(inputPassword, password);
+        WebUI.enterText(driver, inputPassword, password);
     }
     public void clickLoginButton() {
-        clickElement(loginButton);
+        WebUI.clickElement(driver, loginButton);
     }
 
     //Verify helpers
     public String getErrorMessageInvalidEmailAndPasswordDisplayed() {
 
         try {
-            return getText(errorMessageInvalidEmailOrPassword);
+            return WebUI.getText(driver, errorMessageInvalidEmailOrPassword);
         } catch (Exception e) {
             //empty string is returned if error message is not found, to avoid NoSuchElementException
             return "";
@@ -47,7 +48,7 @@ public class LoginPage extends BasePage{
     public String getErrorMessageNullEmailDisplayed() {
 
         try {
-            return waitForVisibility(errorMessageNullEmail).getText();
+            return WebUI.waitForVisibility(driver, errorMessageNullEmail).getText();
         } catch (Exception e) {
             return "";
         }
@@ -55,7 +56,7 @@ public class LoginPage extends BasePage{
     public String getErrorMessageNullPasswordDisplayed() {
 
         try {
-            return getText(errorMessageNullPassword);
+            return WebUI.getText(driver, errorMessageNullPassword);
         } catch (Exception e) {
             return "";
         }
